@@ -14,6 +14,7 @@ COLUMNS = [
 def section(title):
     print(f"\n{'=' * 50}\n{title}\n{'=' * 50}")
 
+
 def extract(season):
     # 1. pull the season and convert to pandas
     df = nfl.load_player_stats([season]).to_pandas()
@@ -27,7 +28,6 @@ def extract(season):
     return df
 
 
-
 if __name__ == "__main__":
     df = extract(SEASON)
     # print the shape so you can sanity-check it
@@ -39,7 +39,7 @@ if __name__ == "__main__":
     df.to_parquet(f"data/raw/player_stats_{SEASON}.parquet", index=False)  
     
     # print DB Head
-    section("DB Head")
+    section("Saved file preview")
     print(pd.read_parquet(f"data/raw/player_stats_{SEASON}.parquet").head())
     
 
