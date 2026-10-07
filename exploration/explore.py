@@ -13,13 +13,13 @@ print(stats[["player_display_name", "position", "team", "week", "season_type"]].
 
 section("Grain check")
 print(f"Unique players:         {stats['player_id'].nunique():,}")
-print(f"Weeks:                  {[int(w) for w in sorted(stats['week'].unique())]}")
+print(f"Weeks:                 {[int(w) for w in sorted(stats['week'].unique())]}")
 print(f"Duplicate player-weeks: {stats.duplicated(subset=['player_id', 'week']).sum()}")
 
 section("Usage-related columns")
 keywords = ["target", "carr", "recep", "share", "wopr", "snap", "air"]
 for col in [
-      c for c in stats.columns 
-      if any (k in c for k in keywords) and c != "pt_fair_caught"
+        c for c in stats.columns 
+        if any (k in c for k in keywords) and c != "pt_fair_caught"
     ]:
     print(f"  - {col}")
