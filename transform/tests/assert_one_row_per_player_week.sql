@@ -1,7 +1,7 @@
-select
+SELECT
     player_id,
     week,
-    count(*) as row_count
-from {{ ref('stg_player_stats') }}
-group by player_id, week
-having count(*) > 1
+    count(*) AS row_count
+FROM {{ ref('stg_player_stats') }}
+GROUP BY player_id, week
+HAVING count(*) > 1
